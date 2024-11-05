@@ -39,7 +39,7 @@ let
         (
           { ... }:
           {
-            nixpkgs.pkgs = nixpkgs.legacyPackages.${system};
+            nixpkgs.pkgs = nixpkgs;
             _module.args = {
               inherit system;
             };
