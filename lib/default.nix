@@ -63,6 +63,18 @@ let
         '') fragments
       )}
     '';
+
+    nottmpfiles = import ./nottmpfiles {
+      inherit lib;
+      nglib = this;
+    };
+
+    maybeChangeUserAndGroup =
+      user: group: script:
+      if user != null then
+        "chpst -u ${user}${lib.optionalString (group != null) ":${group}"} ${script}"
+      else
+        script;
   };
 in
 this
